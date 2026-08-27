@@ -1,0 +1,52 @@
+# jemdoc: menu{MENU}{latex.html}
+= jemdocx -- equations
+
+jemdocx renders TeX-style mathematics with MathJax 4 by default. MathJax runs
+in the browser, produces scalable output, and does not require a local TeX
+installation during site generation.
+
+== Inline equations
+Dollar signs surround inline mathematics. The source
++$f^\star(y) = \sup_x(y^Tx - f(x))$+ produces
+$f^\star(y) = \sup_x(y^Tx - f(x))$ in a paragraph.
+
+== Display equations
+Classic jemdoc uses +\(+ and +\)+ on separate lines for display equations:
+
+~~~
+{Syntax}{}
+\(
+  (I \+ XY)^{-1} = I - X(I \+ YX)^{-1}Y
+\)
+~~~
+
+The result is
+
+\(
+  (I + XY)^{-1} = I - X(I + YX)^{-1}Y.
+\)
+
+== Selecting a backend
+Choose the renderer on the command line:
+
+~~~
+{}{sh}
+python3 jemdoc --math mathjax page.jemdoc
+python3 jemdoc --math png page.jemdoc
+python3 jemdoc --math none page.jemdoc
+~~~
+
+The same choice can be made per document in the first-line options:
+
+~~~
+{Syntax}{}
+\# jemdoc: math{png}
+~~~
+
+The +png+ backend preserves the original jemdoc behavior. It requires +latex+
+and +dvipng+, writes images under the configured equation directory, and honors
+the existing +eqsize+, +eqdir+, +addpackage+, +addtex+, and +noeqcache+
+modelines. These options do not affect MathJax output.
+
+Use +math{none}+ or +--math none+ when another layer will process the original
+equation markup.

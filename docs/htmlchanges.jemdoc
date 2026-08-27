@@ -1,0 +1,39 @@
+# jemdoc: menu{MENU}{htmlchanges.html}
+= jemdocx -- HTML configuration
+
+jemdocx has a built-in configuration containing the HTML fragments used to
+generate a page. A configuration file can override any named block without
+copying the rest of the defaults.
+
+Print the complete default configuration with:
+
+~~~
+{}{sh}
+python3 jemdoc --show-config
+~~~
+
+== Example: customize the footer
+The default +\[lastupdated\]+ block controls the generated footer text. Create a
+file named +site.conf+ containing:
+
+~~~
+{site.conf}{}
+[lastupdated]
+Updated | with jemdocx.
+~~~
+
+Use the configuration while generating a page:
+
+~~~
+{}{sh}
+python3 jemdoc -c site.conf index.jemdoc
+~~~
+
+The vertical bar is replaced with the page's generated timestamp. Other blocks
+can change stylesheets, document structure, menu markup, scripts, or footer
+behavior. Configuration files are UTF-8 text and may define only the blocks
+that differ from the defaults.
+
+For analytics, prefer the built-in +analytics{TAG_ID}+ modeline described on
+the [modelines.html modelines page]. It emits the current HTTPS Google tag
+snippet; site owners remain responsible for consent and privacy requirements.

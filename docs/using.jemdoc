@@ -1,0 +1,51 @@
+# jemdoc: menu{MENU}{using.html}
+= jemdocx -- running jemdoc
+
+jemdocx requires Python 3.8 or newer and has no third-party Python runtime
+dependencies. From the repository root, process a source file with:
+
+~~~
+{}{sh}
+python3 jemdoc index.jemdoc
+~~~
+
+On Windows, use +py -3 jemdoc index.jemdoc+. The command creates +index.html+.
+The +.jemdoc+ extension can be omitted.
+
+== Output and configuration
+Choose an output file with +-o+:
+
+~~~
+{}{sh}
+python3 jemdoc -o html/index.html index.jemdoc
+~~~
+
+Load a custom HTML configuration with +-c+:
+
+~~~
+{}{sh}
+python3 jemdoc -c site.conf -o html/index.html index.jemdoc
+~~~
+
+The default output references +jemdoc.css+. Copy +css/jemdoc.css+ from the
+repository next to the generated HTML, or supply your own stylesheet through a
+configuration or modeline.
+
+== Equation backend
+MathJax 4 is the default and requires no local TeX installation:
+
+~~~
+{}{sh}
+python3 jemdoc --math mathjax index.jemdoc
+~~~
+
+Use +--math png+ for classic +latex+ and +dvipng+ images, or +--math none+ to
+leave equation markup untouched.
+
+== Other commands
+- +python3 jemdoc --help+ prints the command-line overview.
+- +python3 jemdoc --version+ prints version and optional PNG-tool information.
+- +python3 jemdoc --show-config+ prints the default HTML configuration.
+
+See [htmlchanges.html HTML configuration], [modelines.html modelines], and
+[menu.html menus] for site-level customization.

@@ -1,0 +1,36 @@
+jemdocx
+=======
+
+jemdocx is a maintained fork of jemdoc 0.7.3, originally created by Jacob
+Mattingley.
+
+Original jemdoc implementation:
+  Copyright (C) 2007-2012 Jacob Mattingley
+  https://github.com/jem/jemdoc
+
+The LaTeX equation portions of the original implementation were initially
+based on latexmath2png by Kamil Kisiel.
+
+jemdocx modernization:
+  Copyright (C) 2026 Yutao Tang
+  https://github.com/tangyutao/jemdocx
+
+The 2026 modifications include the Python 3 port, UTF-8 file handling,
+MathJax 4 support, command-line modernization, tests, continuous integration,
+and documentation restructuring.
+
+AI-assisted development disclosure:
+  The jemdocx 1.0.0 modernization was developed by Yutao Tang with assistance
+  from OpenAI Codex. Codex assisted with code migration, refactoring, testing,
+  documentation, and repository maintenance. All AI-assisted changes were
+  reviewed and tested by the project maintainer, who is responsible for the
+  resulting release.
+
+  https://developers.openai.com/codex/
+
+This project is distributed under the GNU General Public License, version 3
+or (at your option) any later version. The complete license text is included
+in the LICENSE file.
+
+Individual contributors retain copyright in their contributions unless they
+state otherwise. Contributions are distributed under the same project license.

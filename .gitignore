@@ -1,12 +1,13 @@
-*.pyc
-otherstuff
-proctags.py
-*.swp
-tags.vim
-tags
-matlab
-build
-MANIFEST
-jo
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Generated sites and equation assets
 *.html
-stage/
+eqs/
+
+# Editors and operating systems
+*.swp
+.DS_Store
+Thumbs.db

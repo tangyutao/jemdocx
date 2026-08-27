@@ -1,0 +1,46 @@
+# jemdoc: menu{MENU}{index.html}
+= jemdocx -- modern jemdoc for Python 3
+
+jemdocx is a maintained fork of [https://github.com/jem/jemdoc jemdoc], the
+lightweight markup language created by Jacob Mattingley in 2007. The original
++0.7.3+ release targets Python 2; this fork preserves its concise syntax while
+supporting current Python 3 versions, UTF-8 content, automated testing, and a
+modern equation-rendering path.
+
+The generator remains deliberately small. A jemdoc source file, an optional
+menu and configuration, and a CSS file are enough to build a clean static site.
+
+== Current highlights
+- Python 3.8 and newer; no third-party Python packages.
+- UTF-8 source and output files.
+- [latex.html MathJax 4 equations] by default, without a local TeX install.
+- Optional legacy +latex+ and +dvipng+ PNG rendering.
+- Compatibility with classic jemdoc markup, menus, configuration, and themes.
+- Regression tests across multiple Python 3 releases.
+
+== Getting started
+Run the generator from the repository root:
+
+~~~
+{}{sh}
+python3 jemdoc index.jemdoc
+~~~
+
+Windows users can use +py -3+ in place of +python3+. Continue with the
+[using.html usage guide], browse the [example.html example], or keep the
+[cheatsheet.html cheat sheet] nearby while writing.
+
+== Project direction
+This fork is a conservative modernization rather than a redesign. Its priorities
+are compatibility, Unicode correctness, maintainable Python, reproducible
+builds, and clean web output. Historical release snapshots are available from
+the upstream Git history instead of being duplicated here.
+
+== License and attribution
+Copyright \C 2007--2012 Jacob Mattingley. Subsequent modifications are
+Copyright \C 2026 Yutao Tang. Other contributions remain copyright their
+respective contributors.
+
+jemdocx is distributed under the
+[https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License], version
+3 or later.
