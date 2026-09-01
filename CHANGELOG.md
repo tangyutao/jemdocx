@@ -2,6 +2,14 @@
 
 All notable changes maintained by this fork are documented here.
 
+## Unreleased
+
+- Replaced the `<table>`-based page layout (`#tlayout`/`#layout-menu`/
+  `#layout-content`) with plain `<div>` elements styled by CSS Grid in the
+  default `css/jemdoc.css`. This removes the table's implicit minimum width,
+  which previously caused horizontal overflow on viewports roughly
+  400–600px wide (between the mobile breakpoint and the desktop layout).
+
 ## 1.0.0 - 2026-08-27
 
 - Ported the generator from Python 2 to Python 3.8 and newer.
