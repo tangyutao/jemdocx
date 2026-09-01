@@ -68,7 +68,8 @@ class JemdocTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             workdir = Path(directory)
             (workdir / "MENU").write_text(
-                "Pages\nHome [index.html]\n", encoding="utf-8"
+                "Pages\nHome [index.html]\nResearch\nPublications [publications.html]\n",
+                encoding="utf-8",
             )
             (workdir / "included.txt").write_text(
                 "<span>原始 HTML</span>\n", encoding="utf-8"
@@ -88,6 +89,20 @@ class JemdocTests(unittest.TestCase):
             self.assertIn("<title>现代化的 jemdoc</title>", output)
             self.assertIn("欢迎使用 <b>Python 3</b>。", output)
             self.assertIn('<a href="index.html" class="current">Home</a>', output)
+            self.assertEqual(output.count('<div class="menu-group">'), 2)
+            self.assertEqual(output.count('<div class="menu-links">'), 2)
+            self.assertIn(
+                '<div class="menu-category">Pages</div>\n'
+                '<div class="menu-links">\n'
+                '<div class="menu-item"><a href="index.html" class="current">Home</a></div>',
+                output,
+            )
+            self.assertIn(
+                '<div class="menu-category">Research</div>\n'
+                '<div class="menu-links">\n'
+                '<div class="menu-item"><a href="publications.html">Publications</a></div>',
+                output,
+            )
             self.assertIn("<span>原始 HTML</span>", output)
             self.assertNotIn('id="footer"', output)
 

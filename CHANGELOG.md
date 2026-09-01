@@ -10,6 +10,7 @@ All notable changes maintained by this fork are documented here.
 - Added MathJax 4 as the default equation renderer.
 - Retained the original `latex` + `dvipng` renderer as `--math png`.
 - Added `--math none` and per-document `math{...}` backend selection.
+- Added responsive mobile design support, including grouped navigation on narrow screens.
 - Fixed TeX backslashes being interpreted as regular-expression replacement
   escapes on recent Python releases.
 - Added regression tests and a multi-version GitHub Actions workflow.

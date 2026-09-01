@@ -165,6 +165,18 @@ def standardconf():
   [menucategory]
   <div class="menu-category">|</div>
 
+  [menugroupstart]
+  <div class="menu-group">
+
+  [menugroupend]
+  </div>
+
+  [menulinksstart]
+  <div class="menu-links">
+
+  [menulinksend]
+  </div>
+
   [menuitem]
   <div class="menu-item"><a href="|1">|2</a></div>
 
@@ -295,6 +307,8 @@ def parseconf(cns):
 
 def insertmenuitems(f, mname, current, prefix):
   m = open(mname, encoding='utf-8')
+  group_open = False
+  links_open = False
   while pc(controlstruct(m)) != '':
     l = readnoncomment(m)
     l = l.strip()
@@ -304,6 +318,12 @@ def insertmenuitems(f, mname, current, prefix):
     r = re.match(r'\s*(.*?)\s*\[(.*)\]', l)
 
     if r: # then we have a menu item.
+      if not group_open:
+        out(f.outf, f.conf['menugroupstart'])
+        group_open = True
+      if not links_open:
+        out(f.outf, f.conf['menulinksstart'])
+        links_open = True
       link = r.group(2)
       # Don't use prefix if we have an absolute link.
       if '://' not in r.group(2):
@@ -334,8 +354,19 @@ def insertmenuitems(f, mname, current, prefix):
         hb(f.outf, f.conf['menuitem'], link, menuitem)
 
     else: # menu category.
+      if links_open:
+        out(f.outf, f.conf['menulinksend'])
+        links_open = False
+      if group_open:
+        out(f.outf, f.conf['menugroupend'])
+      out(f.outf, f.conf['menugroupstart'])
+      group_open = True
       hb(f.outf, f.conf['menucategory'], br(l, f))
 
+  if links_open:
+    out(f.outf, f.conf['menulinksend'])
+  if group_open:
+    out(f.outf, f.conf['menugroupend'])
   m.close()
 
 def out(f, s):
